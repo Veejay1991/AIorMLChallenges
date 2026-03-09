@@ -123,3 +123,9 @@ Right now the app uses the existing pre-trained `yolo11m.pt` model directly and 
 
 See [INSTALL.md](INSTALL.md) for full setup instructions.
 
+---
+
+## Demo
+
+[Watch the app demo on Google Drive](https://drive.google.com/file/d/1Yqi5JEYBH7Vn0VNUhRDvkb9U7lgIczJX/view?usp=sharing)
+
