@@ -1,0 +1,32 @@
+<div class="gallery-section">
+  <h2>Example Images</h2>
+  <p class="subtitle">Click an image to run detection on it</p>
+
+  @if (error()) {
+    <p class="error">⚠️ {{ error() }}</p>
+  }
+
+  @if (assets().length === 0 && !error()) {
+    <p class="loading-text">Loading examples…</p>
+  }
+
+  <div class="grid">
+    @for (filename of assets(); track filename) {
+      <div
+        class="card"
+        [class.busy]="loadingAsset() === filename"
+        (click)="detectAsset(filename)"
+      >
+        <div class="img-wrap">
+          <img [src]="getAssetUrl(filename)" [alt]="labelFromFilename(filename)" loading="lazy" />
+          @if (loadingAsset() === filename) {
+            <div class="card-overlay">
+              <div class="spinner"></div>
+            </div>
+          }
+        </div>
+        <div class="card-label">{{ labelFromFilename(filename) }}</div>
+      </div>
+    }
+  </div>
+</div>

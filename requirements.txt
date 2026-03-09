@@ -1,0 +1,14 @@
+# Core AI and Computer Vision
+ultralytics
+torch
+torchvision
+
+# Image Handling and Utilities
+pillow
+requests
+opencv-python
+
+# API Server
+fastapi
+uvicorn[standard]
+python-multipart

@@ -1,0 +1,37 @@
+<header class="app-header">
+  <div class="header-inner">
+    <div class="logo">
+      <span class="logo-icon">&#127919;</span>
+      <div>
+        <h1>Target Detector</h1>
+        <p>Powered by YOLOv8 &middot; Detects Persons, Dogs &amp; Cats</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="app-main">
+  <section class="section">
+    <app-upload (detected)="onDetected($event)" (cleared)="onUploadCleared()" />
+  </section>
+
+  <div id="results-anchor"></div>
+
+  @if (result()) {
+    <section class="section">
+      <app-results
+        [result]="result()"
+        [previewUrl]="previewUrl()"
+        (cleared)="clearResults()"
+      />
+    </section>
+  }
+
+  <section class="section">
+    <app-assets-gallery (detected)="onDetected($event)" />
+  </section>
+</main>
+
+<footer class="app-footer">
+  <p>YOLOv8m &middot; COCO classes: Person (0), Cat (15), Dog (16) &middot; Confidence: 0.40 &middot; IoU: 0.50</p>
+</footer>

@@ -1,0 +1,21 @@
+/* Global styles for Target Detector App */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --accent: #6366f1;
+  --accent-light: #c7d2fe;
+  --card-bg: #ffffff;
+  --zone-bg: #f8faff;
+  --zone-hover: #eef2ff;
+  --border-color: #e2e8f0;
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --page-bg: #f1f5f9;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: var(--page-bg);
+  color: var(--text-primary);
+  line-height: 1.5;
+}

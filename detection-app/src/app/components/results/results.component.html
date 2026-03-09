@@ -1,0 +1,45 @@
+@if (result) {
+  <div class="results-panel">
+    <div class="panel-header">
+      <h2>Detection Results</h2>
+      <button class="close-btn" (click)="clear()" title="Clear results">✕ Clear</button>
+    </div>
+
+    <div class="content">
+      @if (previewUrl) {
+        <div class="preview-wrap">
+          <img [src]="previewUrl" alt="Analyzed image" class="preview-img" />
+        </div>
+      }
+
+      <div class="detections">
+        <p class="message" [class.none]="result.detections.length === 0">
+          {{ result.message }}
+        </p>
+
+        @if (result.detections.length > 0) {
+          <ul class="detection-list">
+            @for (d of result.detections; track $index) {
+              <li class="detection-item">
+                <span class="label-icon">{{ labelMeta(d.label).icon }}</span>
+                <div class="label-info">
+                  <span class="label-name" [style.color]="labelMeta(d.label).color">{{ d.label }}</span>
+                  <div class="confidence-bar-wrap">
+                    <div
+                      class="confidence-bar"
+                      [style.width.%]="confidencePercent(d.confidence)"
+                      [style.background]="labelMeta(d.label).color"
+                    ></div>
+                  </div>
+                </div>
+                <span class="confidence-pct" [style.color]="labelMeta(d.label).color">
+                  {{ confidencePercent(d.confidence) }}%
+                </span>
+              </li>
+            }
+          </ul>
+        }
+      </div>
+    </div>
+  </div>
+}

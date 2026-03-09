@@ -1,0 +1,43 @@
+<div class="upload-section">
+  <h2>Upload an Image</h2>
+  <p class="subtitle">Detect persons, dogs, and cats in your own image</p>
+
+  <div
+    class="drop-zone"
+    [class.dragging]="isDragging()"
+    (dragover)="onDragOver($event)"
+    (dragleave)="onDragLeave()"
+    (drop)="onDrop($event)"
+    (click)="fileInput.click()"
+  >
+    @if (previewUrl()) {
+      <img [src]="previewUrl()" alt="Preview" class="preview-img" />
+      <button class="clear-btn" (click)="clearPreview(); $event.stopPropagation()">✕</button>
+    } @else {
+      <div class="drop-prompt">
+        <span class="icon">📁</span>
+        <p>Drag &amp; drop an image here, or <strong>click to browse</strong></p>
+        <p class="hint">Supports JPG, PNG, BMP, WEBP</p>
+      </div>
+    }
+
+    @if (isLoading()) {
+      <div class="overlay">
+        <div class="spinner"></div>
+        <p>Analyzing image…</p>
+      </div>
+    }
+  </div>
+
+  <input
+    #fileInput
+    type="file"
+    accept="image/*"
+    style="display:none"
+    (change)="onFileSelected($event)"
+  />
+
+  @if (error()) {
+    <p class="error">⚠️ {{ error() }}</p>
+  }
+</div>
